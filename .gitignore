@@ -1,0 +1,25 @@
+# dependencies
+node_modules/
+
+# env
+.env
+.env.*
+
+# logs
+logs
+*.log
+
+# build outputs
+dist/
+build/
+.next/
+
+# OS
+.DS_Store
+
+# editor
+.vscode/*
+!.vscode/extensions.json
+
+# misc
+coverage/
