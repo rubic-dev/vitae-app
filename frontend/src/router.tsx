@@ -17,24 +17,24 @@ export const router = createBrowserRouter([
         index: true,
         element: <Home />,
       },
+      {
+        path: "/dashboard",
+        element: <DashboardLayout />,
+        children: [
+            {
+                index: true,
+                element: <DashboardHome />
+            },
+            {
+                path: "guide",
+                element: <Guide />
+            },
+            {
+                path: "notes",
+                element: <Notes />
+            },
+        ]
+      },
     ],
-  },
-  {
-    path: "/dashboard",
-    element: <DashboardLayout />,
-    children: [
-        {
-            index: true,
-            element: <DashboardHome />
-        },
-        {
-            path: "guide",
-            element: <Guide />
-        },
-        {
-            path: "notes",
-            element: <Notes />
-        },
-    ]
   },
 ]);
