@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import { SidebarProvider } from './context/SidebarContext'
 
 import HomeLayout from "./components/layouts/HomeLayout";
 import DashboardLayout from "./components/layouts/DashboardLayout";
@@ -22,7 +23,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        element: <DashboardLayout />,
+        element: <SidebarProvider><DashboardLayout /></SidebarProvider>,
         children: [
             {
                 index: true,
