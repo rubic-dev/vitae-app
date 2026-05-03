@@ -1,0 +1,132 @@
+{
+  "title": "Vitae — Usage Guide",
+  "sections": [
+    {
+      "type": "section",
+      "title": "Design Philosophy",
+      "id": "design-philosophy",
+      "content": [
+        {
+          "type": "list",
+          "items": [
+            {
+              "title": "Frontend-first execution",
+              "text": "Sessions run entirely on the client until final submission."
+            },
+            {
+              "title": "Immutable attempt data",
+              "text": "Past attempts are preserved exactly as they were taken."
+            },
+            {
+              "title": "Separation of concerns",
+              "text": "Questions = source data, Attempts = historical snapshots"
+            },
+            {
+              "title": "Performance-focused workflow",
+              "text": "Everything exists to identify weak areas and improve retention."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Session Lifecycle",
+      "id": "session-lifecycle",
+      "content": [
+        {
+          "type": "ordered-list",
+          "items": [
+            "Create session → define scope",
+            "Start session → confirm settings",
+            "Answer questions → tracked in real time",
+            "Review results → performance breakdown",
+            "Submit → stored for analytics"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "App",
+      "id": "app",
+      "children": [
+        {
+          "type": "subsection",
+          "title": "Create Session",
+          "id": "create-session",
+          "content": [
+            {
+              "type": "list",
+              "items": [
+                "Question count",
+                "Time limit (optional)",
+                "Subject",
+                "Topics (optional)",
+                "Subtopics (optional)",
+                "Max attempts"
+              ]
+            },
+            {
+              "type": "text",
+              "value": "Creates a session draft and prepares it for execution."
+            }
+          ]
+        },
+        {
+          "type": "subsection",
+          "title": "Start Session",
+          "id": "start-session",
+          "children": [
+            {
+              "type": "subsubsection",
+              "title": "Phase 1 — Overview",
+              "id": "phase-1",
+              "content": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Confirms session configuration",
+                    "Displays question count, time limit, subject, attempt count"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "subsubsection",
+              "title": "Phase 2 — Questions",
+              "id": "phase-2",
+              "content": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Answer selection",
+                    "Navigation (next/previous)",
+                    "Time tracking per question",
+                    "Session duration tracking"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "subsubsection",
+              "title": "Phase 3 — Results",
+              "id": "phase-3",
+              "content": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Total questions",
+                    "Correct / Incorrect",
+                    "Accuracy (%)",
+                    "Total time spent"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
