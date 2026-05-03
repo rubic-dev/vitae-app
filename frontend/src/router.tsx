@@ -7,6 +7,9 @@ import Home from "./components/pages/Home";
 import DashboardHome from "./components/pages/dashboard/DashboardHome";
 import Guide from "./components/pages/dashboard/Guide";
 import Notes from "./components/pages/dashboard/Notes";
+import Sessions from "./components/pages/dashboard/Sessions";
+import Questions from "./components/pages/dashboard/Questions";
+import Analytics from "./components/pages/dashboard/Analytics";
 
 export const router = createBrowserRouter([
   {
@@ -32,6 +35,18 @@ export const router = createBrowserRouter([
             {
                 path: "notes",
                 element: <Notes />
+            },
+            {
+                path: "sessions",
+                element: <Sessions />
+            },
+            {
+                path: "questions",
+                element: <Questions />
+            },
+            {
+                path: "analytics",
+                element: <Analytics />
             },
         ]
       },

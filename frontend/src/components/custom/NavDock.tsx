@@ -1,52 +1,31 @@
-import { useState } from "react"
 import { Menu, Brain, X, CirclePlus, FileBracesCorner, FileText } from "lucide-react"
 import { motion, AnimatePresence } from "motion/react"
 import { Button } from "../ui/button"
 import { Link } from "react-router-dom"
+import { useNavDock } from "../../context/NavContext"
 
 const navItems = [
   { label: "Home", href: "/" },
   { label: "Dashboard", href: "/dashboard" },
+  { label: "Sessions", href: "/dashboard/sessions" },
+  { label: "Questions", href: "/dashboard/questions" },
+  { label: "Analytics", href: "/dashboard/analytics" },
   { label: "Guide", href: "/dashboard/guide" },
   { label: "Notes", href: "/dashboard/notes" },
 ]
 
 const NavDock = () => {
-  const [currentOpen, setCurrentOpen] = useState(false)
-  const [pendingOpen, setPendingOpen] = useState(false)
-  const [showChildren, setShowChildren] = useState(true)
-
-  const toggle = () => {
-    setPendingOpen(!currentOpen)
-    setShowChildren(false)
-  }
-
-  const handleExitComplete = () => {
-    setCurrentOpen(pendingOpen)
-  }
-
-  const handleLayoutComplete = () => {
-    if (currentOpen === pendingOpen && !showChildren) {
-      setShowChildren(true)
-    }
-  }
+const {
+    isDashboard,
+    currentOpen,
+    showChildren,
+    toggle,
+    handleExitComplete,
+    handleLayoutComplete,
+  } = useNavDock()
 
   return (
-    <div className="relative inline-flex">
-      <AnimatePresence>
-        {
-            currentOpen && (
-                <motion.div
-                    className="fixed top-0 left-0 w-full h-full bg-foreground/20 z-10"
-                    onClick={() => toggle()}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                />
-            )
-        }
-      </AnimatePresence>
+    <div className={isDashboard ? "fixed bottom-5 left-1/2 -translate-x-1/2 z-50" : "relative inline-flex"}>
 
       <AnimatePresence>
         {currentOpen && (
