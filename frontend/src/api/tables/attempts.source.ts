@@ -1,3 +1,4 @@
+import { USE_API } from "../../config/tableSource";
 import { generateMockQuestionAttempts } from "../../data/generateQuestionAttempts";
 
 export type QuestionAttemptEntityInput = {
@@ -62,13 +63,14 @@ export function normalizeAttempt(a: QuestionAttemptEntityInput): QuestionAttempt
   };
 }
 
-export function getAttemptRows() {
-  return generateMockQuestionAttempts(50).map(normalizeAttempt);
-}
 
-export async function fetchAttemptRows(): Promise<QuestionAttemptRow[]> {
-  const res = await fetch("/api/attempts");
-  const data: QuestionAttemptEntityInput[] = await res.json();
+export async function getAttemptRows(): Promise<QuestionAttemptRow[]> {
+  if (USE_API) {
+    const res = await fetch("/api/sessions");
+    const data = await res.json();
+    return data.map((s: QuestionAttemptEntityInput) => normalizeAttempt(s));
+  }
 
-  return data.map(normalizeAttempt);
+  // mock path STILL async
+  return generateMockQuestionAttempts(50).map(normalizeAttempt)
 }

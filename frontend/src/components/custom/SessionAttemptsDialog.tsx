@@ -28,6 +28,7 @@ type Props = {
   onOpenChange: (open: boolean) => void;
   sessionName?: string;
   attempts: Attempt[];
+  loading?: boolean;   // ← THIS was never formally added
 };
 
 export function SessionAttemptsDialog({
@@ -35,7 +36,15 @@ export function SessionAttemptsDialog({
   onOpenChange,
   sessionName,
   attempts,
+  loading,
 }: Props) {
+  if (loading) {
+    return (
+      <div className="p-2">
+        <h1 className="text-2xl">loading...</h1>
+      </div>
+    )
+  }
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="lg:min-w-240">

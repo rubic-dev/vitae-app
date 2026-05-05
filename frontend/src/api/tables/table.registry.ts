@@ -18,7 +18,7 @@ export type TableKey =
 
 export const tableRegistry: {
   [K in TableKey]: {
-    getData: () => TableMap[K][];
+    getData: () => Promise<TableMap[K][]>;
     columns: TableColumn<TableMap[K]>[];
   };
 } = {
@@ -26,12 +26,10 @@ export const tableRegistry: {
     getData: getSessionRows,
     columns: sessionColumns,
   },
-
   questions: {
     getData: getQuestionRows,
     columns: questionColumns,
   },
-
   attempts: {
     getData: getAttemptRows,
     columns: questionAttemptColumns,

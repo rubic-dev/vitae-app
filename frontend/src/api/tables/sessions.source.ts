@@ -1,6 +1,5 @@
-import { mapSessionToRow } from "../../components/tables/RowMapper";
-import { mockSessions } from "../../data/mockSessions";
-import type { SessionTableRow } from "../../types/table";
+import { mockSessions } from "../../data/generateSessions";
+import { USE_API } from "../../config/tableSource";
 
 export type SessionEntityInput = {
   id: string;
@@ -75,24 +74,14 @@ export function normalizeSession(
   };
 }
 
-let cache: SessionTableRow[] | null = null;
+export async function getSessionRows(): Promise<SessionRow[]> {
+  if (USE_API) {
+    const res = await fetch("/api/sessions");
+    const data = await res.json();
+    return data.map((s: SessionEntityInput) => normalizeSession(s, 0));
+  }
 
-export function getSessionRows(): SessionTableRow[] {
-  if (cache) return cache;
-
-  cache = mockSessions.map((s) =>
-    mapSessionToRow(s, {
-      currentAttempts: Math.floor(Math.random() * s.max_attempts),
-    })
+  return mockSessions.map((s) =>
+    normalizeSession(s, Math.floor(Math.random() * s.max_attempts))
   );
-
-  return cache;
-}
-
-export async function fetchSessionRows(): Promise<SessionRow[]> {
-  // later replace with real API
-  const res = await fetch("/api/sessions");
-  const data: SessionEntityInput[] = await res.json();
-
-  return data.map((s) => normalizeSession(s, 0));
 }

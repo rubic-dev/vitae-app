@@ -1,3 +1,4 @@
+import { USE_API } from "../../config/tableSource";
 import { generateMockQuestions } from "../../data/generateQuestions";
 
 export type QuestionEntityInput = {
@@ -44,13 +45,13 @@ export function normalizeQuestion(q: QuestionEntityInput): QuestionRow {
   };
 }
 
-export function getQuestionRows() {
-  return generateMockQuestions(50).map(normalizeQuestion);
-}
+export async function getQuestionRows(): Promise<QuestionRow[]> {
+  if (USE_API) {
+    const res = await fetch("/api/sessions");
+    const data = await res.json();
+    return data.map((s: QuestionEntityInput) => normalizeQuestion(s));
+  }
 
-export async function fetchQuestionRows(): Promise<QuestionRow[]> {
-  const res = await fetch("/api/questions");
-  const data: QuestionEntityInput[] = await res.json();
-
-  return data.map(normalizeQuestion);
+  // mock path STILL async
+  return generateMockQuestions(50).map(normalizeQuestion)
 }
