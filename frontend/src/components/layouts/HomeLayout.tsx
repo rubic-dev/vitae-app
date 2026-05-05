@@ -10,7 +10,7 @@ const HomeLayout = () => {
 
   return (
     <NavDockProvider>
-      <div className={`flex flex-col justify-between items-center w-screen h-screen p-4 bg-${isDashboard ? "muted" : "background"}`}>
+      <div className={`flex flex-col justify-between items-center w-screen h-screen p-2 bg-${isDashboard ? "muted" : "background"}`}>
           <SidebarProvider>
             <ThemeProvider>
               <Outlet />

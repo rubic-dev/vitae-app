@@ -18,7 +18,6 @@ import {
   Moon
 } from "lucide-react";
 import { Button } from "../ui/button";
-import { ScrollArea } from "../ui/scroll-area";
 
 const DashboardLayout = () => {
   const { currentOpen, toggle } = useNavDock();
@@ -32,17 +31,17 @@ const DashboardLayout = () => {
         {
           label: "Dashboard",
           href: "/dashboard",
-          icon: <LayoutDashboard size="20" strokeWidth="1.5" />,
+          icon: <LayoutDashboard size="16" strokeWidth="1.75" />,
         },
         {
           label: "Guide",
           href: "/dashboard/guide",
-          icon: <BookText size="20" strokeWidth="1.5" />,
+          icon: <BookText size="16" strokeWidth="1.75" />,
         },
         {
           label: "Notes",
           href: "/dashboard/notes",
-          icon: <NotebookPen size="20" strokeWidth="1.5" />,
+          icon: <NotebookPen size="16" strokeWidth="1.75" />,
         },
       ],
     },
@@ -52,24 +51,24 @@ const DashboardLayout = () => {
         {
           label: "Sessions",
           href: "/dashboard/sessions",
-          icon: <FileSpreadsheet size="20" strokeWidth="1.5" />,
+          icon: <FileSpreadsheet size="16" strokeWidth="1.75" />,
         },
         {
           label: "Questions",
           href: "/dashboard/questions",
-          icon: <FileQuestionMark size="20" strokeWidth="1.5" />,
+          icon: <FileQuestionMark size="16" strokeWidth="1.75" />,
         },
         {
           label: "Analytics",
           href: "/dashboard/analytics",
-          icon: <ChartArea size="20" strokeWidth="1.5" />,
+          icon: <ChartArea size="16" strokeWidth="1.75" />,
         },
       ],
     },
   ];
 
   return (
-    <div className="flex gap-2 w-screen h-screen px-4 overflow-y-hidden">
+    <div className="flex gap-2 w-full h-screen overflow-hidden">
       {/* Overlay */}
       <AnimatePresence>
         {currentOpen && (
@@ -152,7 +151,7 @@ const DashboardLayout = () => {
 
                 {section.items.map((item) => (
                   <Link
-                    className="flex gap-2 items-center w-full hover:bg-background p-1 rounded-md transition-all duration-300"
+                    className="flex gap-2 items-center font-medium w-full hover:bg-background p-1 rounded-md transition-all duration-300"
                     to={item.href}
                     key={item.href}
                   >
@@ -167,7 +166,7 @@ const DashboardLayout = () => {
       </motion.aside>
 
       {/* Content */}
-      <div className="h-full w-full flex-1 rounded-xl bg-background px-8">
+      <div className="h-full flex-1 min-w-0 rounded-xl bg-background px-8 flex flex-col">
         <div className="w-full flex justify-between py-4 border-b-2 border-muted">
           <Button
             size="icon"
@@ -191,10 +190,11 @@ const DashboardLayout = () => {
             }
           </Button>
         </div>
-
-        <ScrollArea className="h-[calc(100vh-5.5rem)] pt-4">
-          <Outlet />
-        </ScrollArea>
+        <div className="flex-1 min-w-0 overflow-y-auto">
+          <div className="min-w-0">
+            <Outlet />
+          </div>
+        </div>
       </div>
     </div>
   );

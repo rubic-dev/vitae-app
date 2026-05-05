@@ -149,7 +149,7 @@ function NotesPage() {
   };
 
   return (
-    <div className="w-full h-full p-6">
+    <div className="w-full h-full">
 
       {/* HEADER */}
       <div className="flex justify-between items-center mb-6">
