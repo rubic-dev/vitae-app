@@ -70,7 +70,7 @@ export default function SessionsTable() {
             ...col,
             cell: (row: SessionRow) => (
               <button
-                className="underline cursor-pointer"
+                className={`hover:underline cursor-pointer transition-all duration-300 ${row.attempts.current !== 0  && "text-chart-3"}`}
                 onClick={() => {
                   setSelectedSession(row);
                   setOpen(true);

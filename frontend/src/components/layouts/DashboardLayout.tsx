@@ -166,7 +166,7 @@ const DashboardLayout = () => {
       </motion.aside>
 
       {/* Content */}
-      <div className="h-full flex-1 min-w-0 rounded-xl bg-background px-8 flex flex-col">
+      <div className="h-full flex-1 min-w-0 rounded-xl bg-background px-8 flex flex-col gap-4">
         <div className="w-full flex justify-between py-4 border-b-2 border-muted">
           <Button
             size="icon"
@@ -191,7 +191,7 @@ const DashboardLayout = () => {
           </Button>
         </div>
         <div className="flex-1 min-w-0 overflow-y-auto">
-          <div className="min-w-0">
+          <div className="min-w-0 pb-20">
             <Outlet />
           </div>
         </div>

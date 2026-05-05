@@ -76,7 +76,7 @@ const RenderSection = ({ section, level = 2 }: any) => {
 
 export default function GuidePage() {
   return (
-    <div className="max-w-3xl mx-auto pt-10 pb-20 space-y-8">
+    <div className="max-w-3xl mx-auto pt-10 space-y-8">
       <h1 className="text-3xl font-bold">{guide.title}</h1>
 
       {guide.sections.map((section: any, i: number) => (

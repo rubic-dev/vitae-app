@@ -15,7 +15,7 @@ import {
 import { DataTable } from "../custom/DataTable";
 import { questionAttemptColumns } from "../tables/columns/QuestionAttemptsColumns";
 
-import type { QuestionAttemptRow } from "../../types/table";
+import type { QuestionAttemptRow } from "../../types/attempts";
 
 type Attempt = {
   id: string;
