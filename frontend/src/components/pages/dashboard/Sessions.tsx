@@ -71,7 +71,7 @@ export default function SessionsTable() {
             </div>
           )}
 
-          <Link to="/dashboard/sessions/create">
+          <Link to="/dashboard/session/create">
             <Button className="rounded-xl">
               <CirclePlus />
               Create Session

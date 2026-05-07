@@ -123,7 +123,7 @@ const DashboardLayout = () => {
 
           {/* Actions */}
           <div className="flex gap-2 w-full">
-            <Link to="/dashboard/sessions/create" className="flex-1">
+            <Link to="/dashboard/session/create" className="flex-1">
               <Button className="rounded-xl w-full flex gap-2 text-start">
                 <CirclePlus />
                 Create Session
@@ -191,7 +191,7 @@ const DashboardLayout = () => {
           </Button>
         </div>
         <div className="flex-1 min-w-0 overflow-y-auto">
-          <div className="min-w-0 pb-20">
+          <div className="min-w-0 pb-20 min-h-full overflow-y-hidden">
             <Outlet />
           </div>
         </div>

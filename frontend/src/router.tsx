@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Outlet } from "react-router-dom";
 import { SidebarProvider } from './context/SidebarContext'
 import { ThemeProvider } from "./context/ThemeContext"
 
@@ -15,6 +15,9 @@ import Questions from "./components/pages/dashboard/Questions";
 import Analytics from "./components/pages/dashboard/Analytics";
 import CreateSession from "./components/pages/dashboard/sessions/CreateSession";
 import UploadQuestions from "./components/pages/dashboard/questions/UploadQuestions";
+import OverviewSession from "./components/pages/dashboard/sessions/OverviewSession";
+import StartSession from "./components/pages/dashboard/sessions/StartSession";
+import ReviewSession from "./components/pages/dashboard/sessions/ReviewSession";
 
 export const router = createBrowserRouter([
   {
@@ -54,8 +57,26 @@ export const router = createBrowserRouter([
                 element: <Analytics />
             },
             {
-                path: "sessions/create",
-                element: <CreateSession />
+                path: "session",
+                element: <><Outlet /></>,
+                children: [
+                  {
+                    path: "create",
+                    element: <CreateSession />
+                  },
+                  {
+                    path: "overview",
+                    element: <OverviewSession />
+                  },
+                  {
+                    path: "start",
+                    element: <StartSession />
+                  },
+                  {
+                    path: "results",
+                    element: <ReviewSession />
+                  },
+                ]
             },
             {
                 path: "questions/upload",
