@@ -18,6 +18,7 @@ import UploadQuestions from "./components/pages/dashboard/questions/UploadQuesti
 import OverviewSession from "./components/pages/dashboard/sessions/OverviewSession";
 import StartSession from "./components/pages/dashboard/sessions/StartSession";
 import ReviewSession from "./components/pages/dashboard/sessions/ReviewSession";
+import UploadNotes from "./components/pages/dashboard/notes/UploadNotes";
 
 export const router = createBrowserRouter([
   {
@@ -42,7 +43,17 @@ export const router = createBrowserRouter([
             },
             {
                 path: "notes",
-                element: <Notes />
+                element: <><Outlet /></>,
+                children: [
+                  {
+                    index: true,
+                    element: <Notes />
+                  },
+                  {
+                    path: "upload",
+                    element: <UploadNotes />
+                  }
+                ]
             },
             {
                 path: "sessions",
@@ -50,7 +61,17 @@ export const router = createBrowserRouter([
             },
             {
                 path: "questions",
-                element: <Questions />
+                element: <><Outlet /></>,
+                children: [
+                  {
+                    index: true,
+                    element: <Questions />
+                  },
+                  {
+                    path: "upload",
+                    element: <UploadQuestions />
+                  }
+                ]
             },
             {
                 path: "analytics",
@@ -77,10 +98,6 @@ export const router = createBrowserRouter([
                     element: <ReviewSession />
                   },
                 ]
-            },
-            {
-                path: "questions/upload",
-                element: <UploadQuestions />
             },
         ]
       },
